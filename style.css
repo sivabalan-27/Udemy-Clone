@@ -18,6 +18,10 @@ body {
     border-bottom: solid black 1px;
     gap: 10px;
     align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1;
 }
 
 .navbar__s1__title {
@@ -33,12 +37,14 @@ body {
     flex-direction: row;
     gap: 10px;
     align-items: center;
+
 }
 
 .navbar__s2 input {
     border: none;
     font-size: 16px;
     width: 80%;
+    background-color: transparent;
 }
 
 .navbar__s2 input:focus {
@@ -49,9 +55,31 @@ body {
     display: flex;
     gap: 10px;
     align-items: center;
+    cursor: 
+    pointer;
+}
+.navbar__s4{
+    display: none;
     cursor: pointer;
 }
-
+/* mylearnings */
+.mylearning{
+    position: relative;
+    cursor: pointer;
+}
+.mylearning:hover .mylearning__popup{
+    display: block;
+}
+.mylearning__popup{
+    position: absolute;
+    background-color: white;
+    border: solid black 2px;
+    width: 100px;
+    top: 150%;
+    padding: 20px;
+    right: 0;
+    display: none;
+}
 .categories {
     display: flex;
     padding: 10px;
@@ -66,17 +94,69 @@ body {
     padding: 10px;
     border-radius: 30px;
     cursor: pointer;
+    border: #A435F0 solid 1px;
 }
-
+.categories p:hover{
+    transition: 2s;
+    background-color: transparent;
+    color: black;
+    border: #A435F0 solid 1px;
+}
+.sale-image{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+   
+}
 .sale-image img {
     width: 100%;
 }
+.sale-image__offer{
+    background-color:white;
+    width: 20%;
+    height: 40%;
+    padding: 20px;
+    position: absolute;
+    top: 80px;
+    left: 50px; 
+    border-radius: 5px;
+    border: solid black 2px;
+    cursor: pointer;
+    animation-name: zoom;
+    animation-duration: 2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+   
+}
+@keyframes zoom{
+    0%{
+        opacity: 0;
+        transform: scale(0);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.sale-image__offer p{
+    padding-top:25px ;
+}
+.sale-image__offer h2{
+    padding-top:25px ;
+}
 
 .course-card {
+    flex-grow: 1;
+    flex-basis: 20%;
+    margin: 10px;
+    margin-top: 5px;
     width: 320px;
-    height: 400px;
-    margin-top: 10px;
+    height: 420px;
     cursor: pointer;
+}
+.course-card img {
+    width: 100%;
+    height: 60%;
 }
 .recommended{
     padding: 10px;
@@ -85,13 +165,16 @@ body {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    gap: 10px;
 }
 
-.course-card img {
-    width: 100%;
-    height: 60%;
+.recommended__subtitle,.recommended__title{
+    margin-left: 15px;
 }
+.recommended__subtitle{
+    margin-bottom: 10px;
 
+}
 .topics {
     padding: 10px;
 }
@@ -125,6 +208,9 @@ body {
     justify-content: space-between;
     margin-top: 10px;
 }
+.popular__title,.popular__subtitle{
+    margin-left: 15px;
+}
 .footer {
     padding: 30px;
     background-color: black;
@@ -146,4 +232,66 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.footer__one__s1 p,.footer__one__s2 p{
+    cursor: pointer;
+}
+
+@media screen and (max-width:1000px) {
+    body{
+        font-size: 10px;
+    }
+    .sale-image__offer {
+        width: 40%;
+        left: 2%;
+        top: 40px;
+        
+        /* Key fixes */
+        height: auto;               /* Let height adjust to content */
+        font-size: 12px;
+        padding: 5px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .sale-image__offer h2,
+    .sale-image__offer p {
+        padding-bottom: 5px;
+        margin: 5px;
+        line-height: 1.4;
+        word-wrap: break-word;
+    }
+}
+@media screen and (max-width:500px) {
+    .course-card{
+        flex-basis: 40%;
+    }
+    .categories{
+        display: none;
+    }
+    .navbar__s2,.navbar__s3{
+        display: none;
+    }
+    .navbar__s4{
+        display: block;
+    }
+        .sale-image__offer {
+            width: 40%;          /* Take more width */
+            left: 2%;            /* Center it */
+            top: 20px;           /* Move it up a bit */
+            height: 70%;        /* Let content define height */
+            font-size: 8px;     /* Smaller text on mobile */
+            padding: 5px;
+            box-sizing: border-box;
+        }
+    
+        .sale-image__offer h2,
+        .sale-image__offer p {
+            padding-top: 2px;
+            line-height: 1.3;
+            word-wrap: break-word;
+        }
 }
